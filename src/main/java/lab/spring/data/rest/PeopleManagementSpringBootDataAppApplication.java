@@ -1,5 +1,8 @@
 package lab.spring.data.rest;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +15,7 @@ import lab.spring.data.rest.service.PersonService;
 public class PeopleManagementSpringBootDataAppApplication implements CommandLineRunner {
 
 	@Autowired
-	private PersonService userService;
+	private PersonService personService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(PeopleManagementSpringBootDataAppApplication.class, args);
@@ -20,12 +23,22 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 
 	@Override
 	public void run(String... args) throws Exception {
-		createUser();
+		// createPerson();
+		createPersons();
 	}
 
-	private void createUser() {
-		Person user = new Person("Niranjan", "Netherland");
-		userService.createUser(user);
+	private void createPersons() {
+		List<Person> personList = Arrays.asList(new Person("Hari", "India"), new Person("Ruban", "USA"));
+		Iterable<Person> out = personService.createPersons(personList);
+		for (Person p : out) {
+			System.out.println(p);
+		}
+
+	}
+
+	private void createPerson() {
+		Person person = new Person("Niranjan", "Netherland");
+		personService.createPerson(person);
 	}
 
 }

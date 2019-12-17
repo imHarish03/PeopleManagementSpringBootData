@@ -1,5 +1,7 @@
 package lab.spring.data.rest.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,14 +12,25 @@ import lab.spring.data.rest.entity.Person;
 public class PersonService {
 
 	@Autowired
-	private PersonDAO userDAO;
+	private PersonDAO personDAO;
 
-	public void createUser(Person user) {
+	public void createPerson(Person user) {
 		try {
-			userDAO.save(user);
+			personDAO.save(user);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+	}
+
+	public Iterable<Person> createPersons(List<Person> personList) {
+		try {
+			Iterable<Person> saved = personDAO.saveAll(personList);
+			return saved;
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+
 	}
 
 }

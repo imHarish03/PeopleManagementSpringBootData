@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users")
+@Table(name = "person")
 public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,6 +46,11 @@ public class Person {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", name=" + name + ", country=" + country + "]";
 	}
 
 }
