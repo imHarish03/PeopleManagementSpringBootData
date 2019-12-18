@@ -39,4 +39,33 @@ public class PersonService {
 		System.out.println(person.get().toString());
 	}
 
+	public void getListPersonByID(List<Integer> userIDs) {
+
+		Iterable<Person> personList = personDAO.findAllById(userIDs);
+
+		for (Person person : personList) {
+			System.out.println(person);
+		}
+
+	}
+
+	public void deletePersonEntity(Person p) {
+		personDAO.delete(p);
+	}
+
+	public void updatePersonCountryById(int id, String country) {
+		try {
+			Optional<Person> optionalPerson = personDAO.findById(id);
+			Person person = optionalPerson.orElseGet(null);
+
+			if (id == person.getId()) {
+				person.setCountry(country);
+			}
+
+			personDAO.save(person);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
 }

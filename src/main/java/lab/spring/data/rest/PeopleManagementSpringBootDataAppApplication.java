@@ -1,5 +1,6 @@
 package lab.spring.data.rest;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +26,34 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 	public void run(String... args) throws Exception {
 		// createPerson();
 		// createPersons();
-		getPersonsById();
+
+		// getPersonsById();
+		// getListPersonByID();
+
+		// deletePersonEntity();
+
+		updatePersonCountryById();
+	}
+
+	private void updatePersonCountryById() {
+		personService.updatePersonCountryById(1, "India");
+
+	}
+
+	private void deletePersonEntity() {
+		Person p = new Person();
+		p.setId(2);
+
+		personService.deletePersonEntity(p);
+
+	}
+
+	private void getListPersonByID() {
+		List<Integer> userIDs = new ArrayList<Integer>();
+		userIDs.add(1);
+		userIDs.add(2);
+		personService.getListPersonByID(userIDs);
+
 	}
 
 	private void getPersonsById() {
