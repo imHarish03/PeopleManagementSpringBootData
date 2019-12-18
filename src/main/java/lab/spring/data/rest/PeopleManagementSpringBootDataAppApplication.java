@@ -24,15 +24,43 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 
 	@Override
 	public void run(String... args) throws Exception {
-		// createPerson();
-		// createPersons();
 
-		// getPersonsById();
-		// getListPersonByID();
+		//// InBuilt Method
+		/* createPerson(); */
+		/* createPersons(); */
+		/* getPersonsById(); */
+		/* getListPersonByID(); */
+		/* deletePersonEntity(); */
+		/* updatePersonCountryById(); */
 
-		// deletePersonEntity();
+		/* CustomQueires */
+		/* findByFirstName(); */
+		/* readByFirstNameOrLastName(); */
+		/* getTopByCountry(); */
+		/* getByCountry(); */
 
-		updatePersonCountryById();
+		findByLastNameOrderByFirstNameAsc();
+	}
+
+	private void findByLastNameOrderByFirstNameAsc() {
+		personService.findByLastNameOrderByFirstNameAsc("manjunath");
+	}
+
+	private void getByCountry() {
+		personService.getByCountry("India");
+	}
+
+	private void getTopByCountry() {
+		personService.getTopByCountry("India");
+	}
+
+	private void readByFirstNameOrLastName() {
+		personService.readByFirstNameOrLastName("niranjan", "manjath");
+	}
+
+	private void findByFirstName() {
+		personService.findByFirstName("niranJan");
+
 	}
 
 	private void updatePersonCountryById() {
@@ -62,7 +90,8 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 	}
 
 	private void createPersons() {
-		List<Person> personList = Arrays.asList(new Person("Hari", "India"), new Person("Ruban", "USA"));
+		List<Person> personList = Arrays.asList(new Person("Hari", "haran", "India"),
+				new Person("Vinodh", "George", "USA"));
 		Iterable<Person> out = personService.createPersons(personList);
 		for (Person p : out) {
 			System.out.println(p);
@@ -71,7 +100,7 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 	}
 
 	private void createPerson() {
-		Person person = new Person("Niranjan", "Netherland");
+		Person person = new Person("Gowtham", "Nishanth", "India");
 		personService.createPerson(person);
 	}
 

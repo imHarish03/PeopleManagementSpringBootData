@@ -17,17 +17,20 @@ public class Person {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
 	private int id;
-	@Column(name = "name")
-	private String name;
-	@Column(name = "country")
+	@Column(name = "FirstName")
+	private String firstName;
+	@Column(name = "Country")
 	private String country;
+	@Column(name = "LastName")
+	private String lastName;
 
 	public Person() {
 
 	}
 
-	public Person(String name, String country) {
-		this.name = name;
+	public Person(String firstName, String lastName, String country) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.country = country;
 	}
 
@@ -39,12 +42,12 @@ public class Person {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getCountry() {
@@ -55,9 +58,18 @@ public class Person {
 		this.country = country;
 	}
 
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", name=" + name + ", country=" + country + "]";
+		return "Person [id=" + id + ", firstName=" + firstName + ", country=" + country + ", lastName=" + lastName
+				+ "]";
 	}
 
 }

@@ -68,4 +68,55 @@ public class PersonService {
 		}
 	}
 
+	public void findByFirstName(String firstName) {
+		try {
+			Person p = personDAO.findByFirstNameIgnoreCase(firstName);
+			System.out.println(p);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+	public void readByFirstNameOrLastName(String firstName, String lastName) {
+		try {
+			Person p = personDAO.readByFirstNameOrLastName(firstName, lastName);
+			System.out.println(p);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+	public void getTopByCountry(String country) {
+
+		try {
+			Person p = personDAO.getTopByCountry(country);
+			System.out.println(p);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+	public void getByCountry(String country) {
+
+		try {
+			Iterable<Person> personList = personDAO.getByCountry(country);
+			for (Person person : personList) {
+				System.out.println(person);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+	public void findByLastNameOrderByFirstNameAsc(String lastName) {
+		List<Person> personList = personDAO.findByLastNameOrderByFirstNameAsc(lastName);
+		for (Person person : personList) {
+			System.out.println(person);
+		}
+	}
+
 }
