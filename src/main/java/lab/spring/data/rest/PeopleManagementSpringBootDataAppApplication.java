@@ -39,7 +39,14 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 		/* getTopByCountry(); */
 		/* getByCountry(); */
 
-		findByLastNameOrderByFirstNameAsc();
+		/* findByLastNameOrderByFirstNameAsc(); */
+
+		getPersonByLastName();
+	}
+
+	private void getPersonByLastName() {
+		personService.getPersonByLastName("manjunath");
+
 	}
 
 	private void findByLastNameOrderByFirstNameAsc() {

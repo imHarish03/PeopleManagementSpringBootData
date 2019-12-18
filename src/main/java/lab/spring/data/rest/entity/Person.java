@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -12,6 +14,9 @@ import org.hibernate.annotations.DynamicUpdate;
 @Entity
 @Table(name = "person")
 @DynamicUpdate
+
+@NamedQueries(value = { @NamedQuery(name = "Person.hari", query = "SELECT p FROM Person p WHERE p.lastName=?1") })
+
 public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -119,4 +119,10 @@ public class PersonService {
 		}
 	}
 
+	public void getPersonByLastName(String string) {
+		List<Person> personList = personDAO.hari(string);
+
+		personList.forEach(System.out::println);
+	}
+
 }
