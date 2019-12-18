@@ -24,7 +24,13 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 	@Override
 	public void run(String... args) throws Exception {
 		// createPerson();
-		createPersons();
+		// createPersons();
+		getPersonsById();
+	}
+
+	private void getPersonsById() {
+		personService.getPersonsById();
+
 	}
 
 	private void createPersons() {

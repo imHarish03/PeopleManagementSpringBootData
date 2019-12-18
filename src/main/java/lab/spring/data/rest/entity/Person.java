@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name = "person")
+@DynamicUpdate
 public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,6 +21,10 @@ public class Person {
 	private String name;
 	@Column(name = "country")
 	private String country;
+
+	public Person() {
+
+	}
 
 	public Person(String name, String country) {
 		this.name = name;
