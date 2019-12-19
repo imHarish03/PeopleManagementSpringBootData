@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.data.domain.Pageable;
 import lab.spring.data.rest.dao.PersonDAO;
 import lab.spring.data.rest.entity.Person;
 
@@ -119,10 +119,25 @@ public class PersonService {
 		}
 	}
 
-	public void getPersonByLastName(String string) {
-		List<Person> personList = personDAO.hari(string);
+	public void getPersonByLastName(String lastName) {
+		/* List<Person> personList = personDAO.hari(string); */
+		List<Person> personList = personDAO.harishWith(lastName);
 
 		personList.forEach(System.out::println);
+	}
+
+	public void likeHarish(String lastName) {
+		List<Person> personList = personDAO.loadHarish(lastName);
+
+		personList.forEach(System.out::println);
+	}
+
+	public void findByCountry(String lastName, Pageable pageable) {
+
+		List<Person> personList = personDAO.findByCountry(lastName, pageable);
+
+		personList.forEach(System.out::println);
+
 	}
 
 }

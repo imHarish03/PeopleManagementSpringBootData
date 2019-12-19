@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 
 import lab.spring.data.rest.entity.Person;
 import lab.spring.data.rest.service.PersonService;
@@ -41,7 +44,20 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 
 		/* findByLastNameOrderByFirstNameAsc(); */
 
-		getPersonByLastName();
+		/* getPersonByLastName(); */
+		/* likeHarish(); */
+
+		findByCountry();
+	}
+
+	private void findByCountry() {
+		Pageable pg = PageRequest.of(0, 4, Direction.DESC, "lastName");
+
+		personService.findByCountry("India", pg);
+	}
+
+	private void likeHarish() {
+		personService.likeHarish("manjunath");
 	}
 
 	private void getPersonByLastName() {
