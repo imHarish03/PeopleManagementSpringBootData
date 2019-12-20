@@ -13,13 +13,18 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 
 import lab.spring.data.rest.entity.Person;
+import lab.spring.data.rest.entity.User;
 import lab.spring.data.rest.service.PersonService;
+import lab.spring.data.rest.service.UserService;
 
 @SpringBootApplication
 public class PeopleManagementSpringBootDataAppApplication implements CommandLineRunner {
 
 	@Autowired
 	private PersonService personService;
+
+	@Autowired
+	private UserService userService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(PeopleManagementSpringBootDataAppApplication.class, args);
@@ -47,7 +52,21 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 		/* getPersonByLastName(); */
 		/* likeHarish(); */
 
-		findByCountry();
+		/* findByCountry(); */
+
+		// NamedParameterWithUpdate
+		// updatePersonEmailById();
+
+		createUser();
+	}
+
+	private void createUser() {
+		userService.createuser();
+	}
+
+	private void updatePersonEmailById() {
+
+		personService.updatePersonLastNameById("Ramanathan", 8);
 	}
 
 	private void findByCountry() {

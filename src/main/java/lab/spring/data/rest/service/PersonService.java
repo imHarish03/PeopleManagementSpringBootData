@@ -140,4 +140,12 @@ public class PersonService {
 
 	}
 
+	public void updatePersonLastNameById(String lastName, int id) {
+		try {
+			personDAO.updatePersonLastNameById(lastName, id);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
 }
