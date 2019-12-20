@@ -13,7 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 
 import lab.spring.data.rest.entity.Person;
-import lab.spring.data.rest.entity.User;
 import lab.spring.data.rest.service.PersonService;
 import lab.spring.data.rest.service.UserService;
 

@@ -23,13 +23,15 @@ public class UserService {
 		try {
 			User user = new User("harihana.r@isteer.com", "hariharan");
 			Login login = new Login("admin");
+			login.setUser(user);
 
-			User u = userDao.save(user);
-
-			login.setUser(u);
-			////////////////////////////////
-			System.out.println(u.getId());
 			loginDao.save(login);
+
+			/*
+			 * User u = userDao.save(user);
+			 * 
+			 * login.setUser(u); //////////////////////////////// userDao.save(user);
+			 */
 
 		} catch (Exception e) {
 			System.out.println(e);
