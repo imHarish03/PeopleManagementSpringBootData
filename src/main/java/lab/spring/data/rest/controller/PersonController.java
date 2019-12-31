@@ -1,5 +1,7 @@
 package lab.spring.data.rest.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,9 +18,9 @@ public class PersonController {
 	@Autowired
 	private PersonService personService;
 
-	@GetMapping(value = "/{Id}")
-	public Person getById(@PathVariable("Id") Integer Id) {
-		return personService.getById(Id);
+	@GetMapping(value = "/All")
+	public List<Person> getById() {
+		return personService.getAllPerson();
 	}
 
 }

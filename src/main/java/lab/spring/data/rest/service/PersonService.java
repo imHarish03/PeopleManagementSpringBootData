@@ -1,9 +1,11 @@
 package lab.spring.data.rest.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
 import lab.spring.data.rest.dao.PersonDAO;
@@ -148,8 +150,20 @@ public class PersonService {
 		}
 	}
 
-	public Person getById(Integer id) {
-		return personDAO.findById(id).orElse(null);
+	/*
+	 * @Cacheable(value = "personCache") public Person getById(Integer id) { return
+	 * personDAO.findById(id).orElse(null); }
+	 */
+
+	@Cacheable(value = "personCache")
+	public List<Person> getAllPerson() {
+		Iterable<Person> peronList = personDAO.findAll();
+
+		ArrayList<Person> data = new ArrayList<Person>();
+		for (Person p : peronList) {
+			data.add(p);
+		}
+		return data;
 	}
 
 }

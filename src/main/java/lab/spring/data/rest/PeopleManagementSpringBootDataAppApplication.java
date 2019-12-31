@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -17,6 +18,7 @@ import lab.spring.data.rest.service.PersonService;
 import lab.spring.data.rest.service.UserService;
 
 @SpringBootApplication
+@EnableCaching
 public class PeopleManagementSpringBootDataAppApplication implements CommandLineRunner {
 
 	@Autowired
@@ -56,7 +58,7 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 		// NamedParameterWithUpdate
 		// updatePersonEmailById();
 
-		//createUser();
+		// createUser();
 	}
 
 	private void createUser() {
