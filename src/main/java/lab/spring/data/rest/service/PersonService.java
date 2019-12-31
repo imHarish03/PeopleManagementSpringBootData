@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
@@ -164,6 +165,16 @@ public class PersonService {
 			data.add(p);
 		}
 		return data;
+	}
+
+	@Cacheable(value = "personCache", key = "#id")
+	public Person getPersonById(Integer id) {
+		return personDAO.findById(id).orElse(null);
+	}
+
+	@CacheEvict(value = "personCache", key = "#id")
+	public void deletebyId(Integer id) {
+		personDAO.deleteById(id);
 	}
 
 }
