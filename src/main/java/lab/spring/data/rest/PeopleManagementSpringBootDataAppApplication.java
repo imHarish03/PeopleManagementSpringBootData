@@ -56,7 +56,7 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 		// NamedParameterWithUpdate
 		// updatePersonEmailById();
 
-		createUser();
+		//createUser();
 	}
 
 	private void createUser() {

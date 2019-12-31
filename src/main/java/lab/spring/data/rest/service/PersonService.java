@@ -148,4 +148,8 @@ public class PersonService {
 		}
 	}
 
+	public Person getById(Integer id) {
+		return personDAO.findById(id).orElse(null);
+	}
+
 }
